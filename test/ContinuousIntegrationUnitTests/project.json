@@ -10,9 +10,15 @@
     },
     "ContinuousIntegration": {
       "target": "project"
+    },
+    "Microsoft.Extensions.Options.ConfigurationExtensions": "1.1.0"
+  },
+  "buildOptions": {
+    "embed": "config.json",
+    "copyToOutput": {
+      "include": [ "config.json" ]
     }
   },
-
   "runtimes": {
     "win10-x86": {},
     "win10-x64": {},

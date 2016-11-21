@@ -2,7 +2,6 @@
 {
     using Xunit;
 
-    using UnitTestBase;
     using ContinuousIntegration;
 
     public class CalculatorUnitTests : UnitTestBase

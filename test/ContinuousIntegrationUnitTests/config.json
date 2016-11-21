@@ -1,0 +1,5 @@
+﻿{
+  "Settings": {
+    "ConnectionString": "Server=(localdb)\\mssqllocaldb;Initial Catalog=CITest;Trusted_Connection=True;MultipleActiveResultSets=true"
+  }
+}
