@@ -27,6 +27,8 @@
             var builder = new ConfigurationBuilder()
                 .AddEmbeddedJsonFile(assembly, "config.json");
 
+            builder.AddEnvironmentVariables();
+
             Configuration = builder.Build();
 
             var services = new ServiceCollection();
