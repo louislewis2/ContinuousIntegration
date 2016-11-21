@@ -8,6 +8,7 @@
     using Microsoft.Extensions.Configuration;
     using Microsoft.AspNetCore.Hosting.Internal;
     using Microsoft.Extensions.DependencyInjection;
+
     using ContinuousIntegration;
 
     public class UnitTestBase
@@ -31,6 +32,7 @@
             var services = new ServiceCollection();
             services.AddLogging();
             services.AddOptions();
+            services.AddAssemblyScanner();
 
             services.Configure<Settings>(Configuration.GetSection("Settings"));
 
