@@ -32,3 +32,5 @@ nuget:
 artifacts:  
 - path: .\artifacts\**\*.nupkg
   name: NuGet
+- path: .\publish
+  name: ContinuousIntegration.Web
