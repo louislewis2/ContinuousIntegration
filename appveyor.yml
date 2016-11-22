@@ -16,6 +16,10 @@ build_script:
 - dotnet build "src\ContinuousIntegration.Api" -c %CONFIGURATION% --no-dependencies --version-suffix %LABEL%
 - dotnet build "src\ContinuousIntegration" -c %CONFIGURATION% --no-dependencies --version-suffix %LABEL%
 - dotnet build "src\ContinuousIntegration.Web" -c %CONFIGURATION% --no-dependencies --version-suffix %LABEL%
+after_build:
+- dotnet pack "src\ContinuousIntegration.Api" -c Debug --no-build --version-suffix %LABEL% -o .\artifacts
+- dotnet pack "src\ContinuousIntegration" -c Debug --no-build --version-suffix %LABEL% -o .\artifacts
+- dotnet publish "src\ContinuousIntegration.Web" -c Debug --no-build --framework netcoreapp1.0 --o .\publish
 test_script:
 - dotnet test "test\ContinuousIntegrationUnitTests" -c %CONFIGURATION%
 pull_requests:  
