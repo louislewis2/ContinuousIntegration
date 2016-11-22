@@ -13,6 +13,7 @@ init:
 before_build:
 - appveyor-retry dotnet restore -v Minimal
 build_script:
+- dotnet build "src\ContinuousIntegration.Api" -c %CONFIGURATION% --no-dependencies --version-suffix %LABEL%
 - dotnet build "src\ContinuousIntegration" -c %CONFIGURATION% --no-dependencies --version-suffix %LABEL%
 test_script:
 - dotnet test "test\ContinuousIntegrationUnitTests" -c %CONFIGURATION%
