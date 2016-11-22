@@ -22,6 +22,8 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "UnitTestBase", "test\UnitTe
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "ContinuousIntegration.Api", "src\ContinuousIntegration.Api\ContinuousIntegration.Api.xproj", "{C159BCDE-6947-4B49-BAD3-69914A30EDAF}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "ContinuousIntegration.Web", "src\ContinuousIntegration.Web\ContinuousIntegration.Web.xproj", "{B2486C0F-ECC4-4623-9683-73C426C939F4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +46,10 @@ Global
 		{C159BCDE-6947-4B49-BAD3-69914A30EDAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C159BCDE-6947-4B49-BAD3-69914A30EDAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C159BCDE-6947-4B49-BAD3-69914A30EDAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2486C0F-ECC4-4623-9683-73C426C939F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2486C0F-ECC4-4623-9683-73C426C939F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2486C0F-ECC4-4623-9683-73C426C939F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2486C0F-ECC4-4623-9683-73C426C939F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,5 +59,6 @@ Global
 		{0A6AA269-5CA1-4627-9048-BE24985B48B4} = {77DE0523-7C59-4881-BBEC-E205DE152703}
 		{299F7018-5E5B-4AB5-A684-1BC28E3116FE} = {77DE0523-7C59-4881-BBEC-E205DE152703}
 		{C159BCDE-6947-4B49-BAD3-69914A30EDAF} = {0D421A62-FB8F-4D6E-A1BC-7443689CD754}
+		{B2486C0F-ECC4-4623-9683-73C426C939F4} = {0D421A62-FB8F-4D6E-A1BC-7443689CD754}
 	EndGlobalSection
 EndGlobal
