@@ -34,3 +34,7 @@ artifacts:
   name: NuGet
 - path: .\publish
   name: ContinuousIntegration.Web
+  type: WebDeployPackage
+deploy_script:
+- ps: $env:package_path = $artifacts["ContinuousIntegration.Web"].path
+- '"C:\Program Files\IIS\Microsoft Web Deploy V3\msdeploy.exe" -verb:sync -source:package="%package_path%" -dest:auto -setParam:name="IIS Web Application Name",value="Default Web Site"'
