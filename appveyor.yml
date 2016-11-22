@@ -2,6 +2,7 @@ version: '{build}'
 
 services:
 - mssql2014
+- iis
 configuration:
 - Debug
 platform: Any CPU
