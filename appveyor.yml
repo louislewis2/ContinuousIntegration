@@ -19,7 +19,7 @@ build_script:
 after_build:
 - dotnet pack "src\ContinuousIntegration.Api" -c Debug --no-build --version-suffix %LABEL% -o .\artifacts
 - dotnet pack "src\ContinuousIntegration" -c Debug --no-build --version-suffix %LABEL% -o .\artifacts
-- dotnet publish "src\ContinuousIntegration.Web" -c Debug --no-build --framework netcoreapp1.0 -o .\publish
+- dotnet publish "src\ContinuousIntegration.Web" -c Debug --no-build --framework netcoreapp1.0 -o %appveyor_build_folder%\publish
 test_script:
 - dotnet test "test\ContinuousIntegrationUnitTests" -c %CONFIGURATION%
 pull_requests:  
