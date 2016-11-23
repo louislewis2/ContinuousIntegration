@@ -17,11 +17,12 @@ build_script:
 - dotnet build "src\ContinuousIntegration.Api" -c %CONFIGURATION% --no-dependencies --version-suffix %LABEL%
 - dotnet build "src\ContinuousIntegration" -c %CONFIGURATION% --no-dependencies --version-suffix %LABEL%
 - dotnet build "src\ContinuousIntegration.Web" -c %CONFIGURATION% --no-dependencies --version-suffix %LABEL%
-- msbuild "src\ContinuousIntegration.Web\ContinuousIntegration.Web.xproj" /t:Package /p:PackageLocation=c:\temp\ContinuousIntegration.Web.zip /p:PackageAsSingleFile=True
 after_build:
 - dotnet pack "src\ContinuousIntegration.Api" -c Debug --no-build --version-suffix %LABEL% -o .\artifacts
 - dotnet pack "src\ContinuousIntegration" -c Debug --no-build --version-suffix %LABEL% -o .\artifacts
 - dotnet publish "src\ContinuousIntegration.Web" -c Debug --no-build --framework netcoreapp1.0 -o %appveyor_build_folder%\publish
+- 7z a %appveyor_build_folder%\webpackage\ContinuousIntegration.Web.zip %appveyor_build_folder%\publish\*
+- '"C:\Program Files (x86)\IIS\Microsoft Web Deploy V3\msdeploy.exe" -verb:sync -source:package="appveyor_build_folder%\webpackage\ContinuousIntegration.Web.zip" -dest:auto,-setParam:"IIS Web Application Name"="Default Web Site"'
 test_script:
 - dotnet test "test\ContinuousIntegrationUnitTests" -c %CONFIGURATION%
 before_deploy: PowerShell .\InstallSelfSignedCert.ps1
@@ -40,10 +41,5 @@ artifacts:
   type: WebDeployPackage
 deploy:
   # Local deployment for testing
-  - provider: Local
-    artifact: ContinuousIntegration.Web
-    ContinuousIntegration.Web.deploy_website: true
-    ContinuousIntegration.Web.site_name: Default Web Site
-    ContinuousIntegration.Web.remove_files: true
 after_deploy:
 - dotnet test "test\ContinuousIntegration.IntegrationTests" -c %CONFIGURATION%
