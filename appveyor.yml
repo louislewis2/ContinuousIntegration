@@ -23,6 +23,7 @@ after_build:
 - dotnet publish "src\ContinuousIntegration.Web" -c Debug --no-build --framework netcoreapp1.0 -o %appveyor_build_folder%\publish
 test_script:
 - dotnet test "test\ContinuousIntegrationUnitTests" -c %CONFIGURATION%
+before_deploy: PowerShell .\InstallSelfSignedCert.ps1
 pull_requests:  
   do_not_increment_build_number: true
 branches:  
@@ -36,8 +37,7 @@ artifacts:
 - path: .\publish
   name: ContinuousIntegration.Web
   type: WebDeployPackage
-before_deploy:
-  - PowerShell .\InstallSelfSignedCert.ps1
+deploy:
   # Local deployment for testing
   - provider: Local
     artifact: ContinuousIntegration.Web
