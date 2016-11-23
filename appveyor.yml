@@ -22,7 +22,7 @@ after_build:
 - dotnet pack "src\ContinuousIntegration" -c Debug --no-build --version-suffix %LABEL% -o .\artifacts
 - dotnet publish "src\ContinuousIntegration.Web" -c Debug --no-build --framework netcoreapp1.0 -o %appveyor_build_folder%\publish
 - 7z a %appveyor_build_folder%\packaged\ContinuousIntegrationWeb.zip %appveyor_build_folder%\publish\*
-- '"C:\Program Files (x86)\IIS\Microsoft Web Deploy V3\msdeploy.exe" -verb:sync -source:package="appveyor_build_folder%\packaged\ContinuousIntegrationWeb.zip" -dest:auto,-setParam:"IIS Web Application Name"="Default Web Site"'
+- '"C:\Program Files (x86)\IIS\Microsoft Web Deploy V3\msdeploy.exe" -verb:sync -source:package="%appveyor_build_folder%\packaged\ContinuousIntegrationWeb.zip" -dest:auto,-setParam:"IIS Web Application Name"="Default Web Site"'
 test_script:
 - dotnet test "test\ContinuousIntegrationUnitTests" -c %CONFIGURATION%
 before_deploy: PowerShell .\InstallSelfSignedCert.ps1
