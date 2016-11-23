@@ -34,7 +34,7 @@
             Assert.Equal(@"[""value1"",""value2""]", content);
         }
 
-        [Fact]
+        [Fact(Skip = "Used to test ci builds to perform a controlled failure")]
         public void Will_Cause_A_Failure()
         {
             Assert.Equal(false, true);

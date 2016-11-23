@@ -1,16 +1,16 @@
 version: '{build}'
 
+init:
+- ps: $Env:LABEL = "CI" + $Env:APPVEYOR_BUILD_NUMBER.PadLeft(5, "0")
+environment:
+  DatabaseSettings__ConnectionString: Server=(local)\SQL2014;Initial Catalog=TestDatabase;User ID=sa;Password=Password12!;MultipleActiveResultSets=true
+  DOTNET_CLI_TELEMETRY_OPTOUT: 1
 services:
 - mssql2014
 - iis
 configuration:
 - Debug
 platform: Any CPU
-environment:
-  DatabaseSettings__ConnectionString: Server=(local)\SQL2014;Initial Catalog=TestDatabase;User ID=sa;Password=Password12!;MultipleActiveResultSets=true
-  DOTNET_CLI_TELEMETRY_OPTOUT: 1
-init:
-- ps: $Env:LABEL = "CI" + $Env:APPVEYOR_BUILD_NUMBER.PadLeft(5, "0")
 before_build:
 - appveyor-retry dotnet restore -v Minimal
 build_script:
@@ -23,7 +23,6 @@ after_build:
 - dotnet publish "src\ContinuousIntegration.Web" -c Debug --no-build --framework netcoreapp1.0 -o %appveyor_build_folder%\publish
 test_script:
 - dotnet test "test\ContinuousIntegrationUnitTests" -c %CONFIGURATION%
-before_deploy: PowerShell .\InstallSelfSignedCert.ps1
 pull_requests:  
   do_not_increment_build_number: true
 branches:  
@@ -37,7 +36,8 @@ artifacts:
 - path: .\publish
   name: ContinuousIntegration.Web
   type: WebDeployPackage
-deploy:
+before_deploy:
+  - PowerShell .\InstallSelfSignedCert.ps1
   # Local deployment for testing
   - provider: Local
     artifact: ContinuousIntegration.Web
