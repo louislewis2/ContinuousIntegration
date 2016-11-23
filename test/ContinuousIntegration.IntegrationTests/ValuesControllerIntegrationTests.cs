@@ -34,6 +34,12 @@
             Assert.Equal(@"[""value1"",""value2""]", content);
         }
 
+        [Fact]
+        public void Will_Cause_A_Failure()
+        {
+            Assert.Equal(false, true);
+        }
+
         #endregion Test Methods
     }
 }
