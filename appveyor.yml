@@ -44,3 +44,5 @@ deploy:
     ContinuousIntegration.Web.deploy_website: true
     ContinuousIntegration.Web.site_name: Default Web Site
     ContinuousIntegration.Web.remove_files: true
+after_deploy:
+- dotnet test "test\ContinuousIntegration.IntegrationTests" -c %CONFIGURATION%
