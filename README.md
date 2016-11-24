@@ -1,4 +1,4 @@
-Continuous Integration
+Continuous Integration With AppVeyor
 ====
 
 A sample of using AppVeyor to build .Net Core projects, then run unit tests.
