@@ -41,8 +41,8 @@ artifacts:
   type: WebDeployPackage
 deploy:
 - provider: WebDeploy 
-  server: continuousintegrationsample.scm.azurewebsites.net:443 
-  website: https://continuousintegrationsample.azurewebsites.net/ 
+  server: continuousintegrationsample.scm.azurewebsites.net:443/msdeploy.axd?site=ContinuousIntegrationSample 
+  website: ContinuousIntegrationSample 
   username: 
     secure: UtwWSnKfFRQc7x3CjXHrnA==
   password: 
