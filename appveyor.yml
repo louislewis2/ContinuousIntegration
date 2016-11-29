@@ -39,3 +39,16 @@ artifacts:
 - path: .\publish
   name: ContinuousIntegration.Web
   type: WebDeployPackage
+deploy:
+- provider: WebDeploy 
+  server: continuousintegrationsample.scm.azurewebsites.net:443 
+  website: https://continuousintegrationsample.azurewebsites.net/ 
+  username: 
+    secure: UtwWSnKfFRQc7x3CjXHrnA==
+  password: 
+    secure: C6Rs8RqbFe5cl2hYSlC8kQ==
+  artifact: ContinuousIntegration.Web
+  aspnet_core: true 
+  aspnet_core_force_restart: false 
+  on: 
+    branch: master
